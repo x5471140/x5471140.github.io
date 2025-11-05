@@ -1,7 +1,114 @@
-<p>Hello everyone</p>
-<p>我是 Yang Xiao </p>
-<p>Welcome to my page</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>个人介绍 | GitHub.io</title>
+  <!-- 引入 Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入 Font Awesome 图标 -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- 配置 Tailwind 自定义主题 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            secondary: '#1E40AF',
+            neutral: '#F3F4F6',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  <!-- 自定义工具类 -->
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .transition-custom {
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  </style>
+  <style>
+    /* 全局样式 */
+    body {
+      scroll-behavior: smooth;
+    }
+    /* 动画效果 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-neutral to-white min-h-screen flex items-center justify-center p-4 md:p-8">
+  <!-- 卡片容器 -->
+  <div class="max-w-md w-full bg-white rounded-2xl shadow-xl overflow-hidden transform hover:shadow-2xl transition-custom">
+    <!-- 顶部装饰条 -->
+    <div class="h-2 bg-gradient-to-r from-primary to-secondary"></div>
+    
+    <!-- 内容区域 -->
+    <div class="p-8 md:p-10">
+      <!-- 个人姓名（移除头像后调整间距，保持居中） -->
+      <div class="text-center mb-8 animate-fade-in">
+        <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-gray-800 text-shadow">张三</h1>
+        <p class="text-gray-500 mt-1">Software Engineer</p>
+      </div>
+      
+      <!-- 分隔线 -->
+      <div class="w-24 h-1 bg-primary/30 rounded-full mx-auto my-8 animate-fade-in delay-100"></div>
+      
+      <!-- 联系信息 -->
+      <div class="space-y-6 animate-fade-in delay-200">
+        <!-- 公司信息 -->
+        <div class="flex items-center space-x-4 group">
+          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-custom">
+            <i class="fa fa-building"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">公司名称</p>
+            <p class="font-medium text-gray-800">字节跳动</p>
+          </div>
+        </div>
+        
+        <!-- 邮箱信息 -->
+        <div class="flex items-center space-x-4 group">
+          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-custom">
+            <i class="fa fa-envelope"></i>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">电子邮箱</p>
+            <a href="mailto:example@company.com" class="font-medium text-gray-800 hover:text-primary transition-custom">example@company.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<ul>
-  
-</ul>
+  <!-- 简单的交互脚本 -->
+  <script>
+    // 页面加载完成后添加动画类
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.animate-fade-in');
+      elements.forEach(el => el.style.opacity = '0');
+      
+      // 触发动画
+      setTimeout(() => {
+        elements.forEach(el => el.style.animationPlayState = 'running');
+      }, 100);
+    });
+  </script>
+</body>
+</html>
